@@ -53,7 +53,6 @@ function sendPdfDocument(recipient) {
     },
   });
 }
-
 function sendTemplate(recipient) {
   try {
     return JSON.stringify({
@@ -73,7 +72,7 @@ function sendTemplate(recipient) {
               {
                 type: "image",
                 image: {
-                  link: "https://placehold.co/600x400",
+                  link: "https://i.ibb.co/09TzWhf/email-beone-saude.jpg",
                 },
               },
             ],
