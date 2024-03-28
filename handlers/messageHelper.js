@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 function sendMessage(data) {
   var config = {
@@ -99,10 +99,5 @@ function sendTemplate(recipient) {
   }
 }
 
-module.exports = {
-  sendMessage: sendMessage,
-  sendImageUrl: sendImageUrl,
-  sendPdfDocument: sendPdfDocument,
-  getTextMessageInput: getTextMessageInput,
-  sendTemplate: sendTemplate,
-};
+export { getTextMessageInput, sendImageUrl, sendMessage, sendPdfDocument, sendTemplate };
+

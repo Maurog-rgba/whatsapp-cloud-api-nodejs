@@ -1,6 +1,7 @@
 {
   "name": "prova-conceito-whatsapp",
   "version": "0.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "node --watch ./bin/www"

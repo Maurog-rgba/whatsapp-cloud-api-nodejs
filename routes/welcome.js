@@ -1,11 +1,12 @@
-const express = require("express");
-const router = express.Router();
-require("dotenv").config();
-const { sendMessage, sendTemplate } = require("../handlers/messageHelper");
+import { config } from "dotenv";
+import { Router, json, urlencoded } from "express";
+import { sendMessage, sendTemplate } from "../handlers/messageHelper.js";
+const router = Router();
 
+config();
 // Substitua body-parser por express.json() e express.urlencoded()
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
+router.use(json());
+router.use(urlencoded({ extended: false }));
 
 // Adicione um manipulador de erros para express.json()
 router.use(function (err, req, res, next) {
@@ -35,4 +36,4 @@ router.post("/", function (req, res, next) {
     });
 });
 
-module.exports = router;
+export default router;
