@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 import { Router, json, urlencoded } from "express";
-import { sendMessage, sendTemplate } from "../handlers/messageHelper.js";
+import MessageHelper from "../handlers/messageHelper.js";
+
+const messageHelper = new MessageHelper();
 const router = Router();
 
 config();
@@ -19,9 +21,9 @@ router.use(function (err, req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const data = sendTemplate(process.env.RECIPIENT_WAID);
+  const data = messageHelper.sendTemplate(process.env.RECIPIENT_WAID);
 
-  sendMessage(data)
+  messageHelper.sendMessage(data)
     .then(function (response) {
       res.redirect("/");
       console.log(response.data);
