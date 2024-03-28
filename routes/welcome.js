@@ -6,11 +6,10 @@ const messageHelper = new MessageHelper();
 const router = Router();
 
 config();
-// Substitua body-parser por express.json() e express.urlencoded()
+
 router.use(json());
 router.use(urlencoded({ extended: false }));
 
-// Adicione um manipulador de erros para express.json()
 router.use(function (err, req, res, next) {
   if (err) {
     console.error(err);
@@ -21,19 +20,19 @@ router.use(function (err, req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const data = messageHelper.sendTemplate(process.env.RECIPIENT_WAID);
+  const requestBody = req.body;
+  console.log('name:', requestBody.name);
+  console.log('email:', requestBody.phone);
+  const data = messageHelper.sendTemplate(process.env.RECIPIENT_WAID, requestBody.name, requestBody.phone);
 
   messageHelper.sendMessage(data)
     .then(function (response) {
       res.redirect("/");
       console.log(response.data);
-      // res.sendStatus(200);
       return;
     })
     .catch(function (error) {
       console.log(error.message);
-      console.log(error.response.data);
-      res.sendStatus(500);
       return;
     });
 });

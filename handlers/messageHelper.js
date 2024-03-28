@@ -38,7 +38,7 @@ class MessageHelper {
     return this.getBasicMessage(recipient, "document", { link: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", filename: "dummy.pdf" });
   }
 
-  sendTemplate(recipient) {
+  sendTemplate(recipient, name, phone) {
     try {
       return this.getBasicMessage(recipient, "template", {
         name: "modela",
@@ -48,8 +48,8 @@ class MessageHelper {
           {
             type: "body",
             parameters: [
-              { type: "text", text: "Mauro" },
-              { type: "text", text: "oaisiduhoasidjhaspoid" },
+              { type: "text", text: name },
+              { type: "text", text: phone },
             ],
           },
         ],
